@@ -21,8 +21,8 @@ To allow ssh with key, generate ssh files.
     // Add public keyfile.
 SSH in.
 Update system.
-Install AMP.
-    Packages: 'php, apache2, mariadb-server'
+Install AMP+.
+    Packages: 'php, apache2, mariadb-server, php-curl, php-gd, php-zip'
 MariaDB setup.
     sudo mysql_secure_installation
     // Don't set root password.
@@ -41,4 +41,14 @@ Start apache2 server.
     sc enable apache2.service
 Restrict IP access.
     // Upload 000-default.conf. Edit IP address.
+Clone git repository.
+    git clone https://[REPOSITORY_URL]
+    git config --global user.name "Jordan Felipe"
+    git config --global user.email "jordanfelipe402@gmail.com"
 Follow install instructions INSTALL.md.
+    // In /var/www/html/[HTML_FOLDER].
+    sudo chown -R www-data ./*
+    sudo chgrp -R www-data ./*
+    sudo chmod 770 config.php
+    cd admin/
+    sudo chmod 770 config.php
