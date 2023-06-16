@@ -41,4 +41,4 @@ Start apache2 server.
     sc enable apache2.service
 Restrict IP access.
     // Upload 000-default.conf. Edit IP address.
-    
+Follow install instructions INSTALL.md.

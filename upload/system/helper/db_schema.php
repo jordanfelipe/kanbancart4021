@@ -4032,6 +4032,11 @@ function oc_db_schema() {
 				'not_null' => true
 			],
 			[
+				'name' => 'requester',
+				'type' => 'text',
+				'not_null' => true
+			],
+			[
 				'name' => 'total',
 				'type' => 'decimal(15,4)',
 				'not_null' => true,
@@ -4787,6 +4792,11 @@ function oc_db_schema() {
 				'not_null' => true
 			],
 			[
+				'name' => 'overflow_location',
+				'type' => 'varchar(128)',
+				'not_null' => true
+			],
+			[
 				'name' => 'variant',
 				'type' => 'text',
 				'not_null' => true,
@@ -4805,6 +4815,12 @@ function oc_db_schema() {
 				'default' => '0'
 			],
 			[
+				'name' => 'uom',
+				'type' => 'varchar(64)',
+				'not_null' => true,
+				'default' => 'each'
+			],
+			[
 				'name' => 'stock_status_id',
 				'type' => 'int(11)',
 				'not_null' => true
@@ -4818,6 +4834,23 @@ function oc_db_schema() {
 				'name' => 'manufacturer_id',
 				'type' => 'int(11)',
 				'not_null' => true
+			],
+			[
+				'name' => 'restock_group_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			],
+			[
+				'name' => 'reorder_point',
+				'type' => 'int(4)',
+				'not_null' => true,
+				'default' => '5'
+			],
+			[
+				'name' => 'reorder_quantity',
+				'type' => 'int(4)',
+				'not_null' => true,
+				'default' => '10'
 			],
 			[
 				'name' => 'shipping',
@@ -4911,6 +4944,23 @@ function oc_db_schema() {
 				'type' => 'tinyint(1)',
 				'not_null' => true,
 				'default' => '0'
+			],
+			[
+				'name' => 'date_expected',
+				'type' => 'date',
+				'not_null' => true
+			],
+			[
+				'name' => 'has_expiry',
+				'type' => 'tinyint(1)',
+				'not_null' => true,
+				'default' => '0'
+			],
+			[
+				'name' => 'date_expired',
+				'type' => 'datetime',
+				'not_null' => true,
+				'default' => '2030-01-01 00:00:00'
 			],
 			[
 				'name' => 'date_added',
@@ -5844,6 +5894,85 @@ function oc_db_schema() {
 				'table' => 'product',
 				'field' => 'product_id'
 			]
+		],
+		'engine' => 'InnoDB',
+		'charset' => 'utf8mb4',
+		'collate' => 'utf8mb4_general_ci'
+	];
+
+	$tables[] = [
+		'name' => 'restock',
+		'field' => [
+			[
+				'name' => 'restock_id',
+				'type' => 'int(11)',
+				'not_null' => true,
+				'auto_increment' => true
+			],
+			[
+				'name' => 'product_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			],
+			[
+				'name' => 'date_added',
+				'type' => 'datetime',
+				'not_null' => true
+			],
+			[
+				'name' => 'date_modified',
+				'type' => 'datetime',
+				'not_null' => true
+			],
+			[
+				'name' => 'order_placed',
+				'type' => 'tinyint(1)',
+				'not_null' => true,
+				'default' => '0'
+			]
+		],
+		'primary' => [
+			'restock_id'
+		],
+		'foreign' => [
+			[
+				'key'   => 'product_id',
+				'table' => 'product',
+				'field' => 'product_id'
+			]
+		],
+		'engine' => 'InnoDB',
+		'charset' => 'utf8mb4',
+		'collate' => 'utf8mb4_general_ci'
+	];
+
+	$tables[] = [
+		'name' => 'restock_group',
+		'field' => [
+			[
+				'name' => 'restock_group_id',
+				'type' => 'int(11)',
+				'not_null' => true,
+				'auto_increment' => true
+			],
+			[
+				'name' => 'name',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			],
+			[
+				'name' => 'image',
+				'type' => 'varchar(255)',
+				'default' => null 
+			],
+			[
+				'name' => 'sort_order',
+				'type' => 'int(3)',
+				'not_null' => true
+			]
+		],
+		'primary' => [
+			'restock_group_id'
 		],
 		'engine' => 'InnoDB',
 		'charset' => 'utf8mb4',
