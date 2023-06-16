@@ -1,0 +1,44 @@
+14JUN2023:
+Rebuild server to Ubuntu 22.04 LTS.
+For DigitalOcean, recover root password via email.
+Create user jordan.
+    useradd -m jordan  // m: with home
+    passwd jordan // create password for jordan 
+    su jordan // switch to jordan
+    groupadd -aG sudo jordan // add jordan to sudoers
+    cd // go home 
+Update sudo information.
+    usermod -aG sudo username // add jordan to sudoers 
+    EDITOR=nano visudo // use nano to edit sudo file
+    visudo // edit sudo file
+    Defaults        timestamp_timeout=60 // update sudo timeout 
+Uploadtemplate .bashrc file. 
+To allow ssh with key, generate ssh files.
+    // !! Look into disallowing other types of login. I didn't do that this last time. 
+    mkdir .ssh 
+    cd .ssh
+    nano authorized_keys // consolidate this and the last two
+    // Add public keyfile.
+SSH in.
+Update system.
+Install AMP.
+    Packages: 'php, apache2, mariadb-server'
+MariaDB setup.
+    sudo mysql_secure_installation
+    // Don't set root password.
+    // Answer 'yes' to configuration options.
+MariaDB admin user.
+    sudo mariadb
+    GRANT ALL ON *.* TO `admin`@`localhost` IDENTIFIED BY '[password]' WITH GRANT OPTION; // replace [password]
+    FLUSH PRIVILEGES;
+    CREATE TABLE kanbancart;
+    CREATE USER `kanbanshop`@`localhost` INDENTIFIED BY '[password]'; // replace [password]
+    GRANT CREATE, DELETE, DROP, EXECUTE, INSERT, SELECT, UPDATE ON `kanbancart`.* TO `kanbanshop`@`localhost`;
+    FLUSH PRIVILEGES;
+    exit;
+Start apache2 server.
+    sc start apache2.service
+    sc enable apache2.service
+Restrict IP access.
+    // Upload 000-default.conf. Edit IP address.
+    
