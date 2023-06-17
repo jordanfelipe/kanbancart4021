@@ -22,7 +22,7 @@ To allow ssh with key, generate ssh files.
 SSH in.
 Update system.
 Install AMP+.
-    Packages: 'php, apache2, mariadb-server, php-curl, php-gd, php-zip'
+    Packages: 'php, apache2, mariadb-server, php-mysql, php-curl, php-gd, php-zip'
 MariaDB setup.
     sudo mysql_secure_installation
     // Don't set root password.
@@ -52,3 +52,12 @@ Follow install instructions INSTALL.md.
     sudo chmod 770 config.php
     cd admin/
     sudo chmod 770 config.php
+Move storage directory.
+    sudo mv /var/www/html/system/storage/ /var/www/html/storage-main/
+    sudo nano /var/www/html/config.php 
+        // Change
+        define('DIR_STORAGE', DIR_OPENCART . 'storage/');
+        // To
+        define('DIR_STORAGE', '/var/www/storage-main/');
+    sudo nano /var/www/html/admin/config.php
+        // Repeat above
