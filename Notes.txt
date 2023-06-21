@@ -39,6 +39,8 @@ MariaDB admin user.
 Start apache2 server.
     sc start apache2.service
     sc enable apache2.service
+
+15JUN2023:
 Restrict IP access.
     // Upload 000-default.conf. Edit IP address.
 Clone git repository.
@@ -52,6 +54,8 @@ Follow install instructions INSTALL.md.
     sudo chmod 770 config.php
     cd admin/
     sudo chmod 770 config.php
+
+16JUN2023:
 Move storage directory.
     sudo mv /var/www/html/system/storage/ /var/www/html/storage-main/
     sudo nano /var/www/html/config.php 
@@ -61,3 +65,26 @@ Move storage directory.
         define('DIR_STORAGE', '/var/www/storage-main/');
     sudo nano /var/www/html/admin/config.php
         // Repeat above
+Rename admin directory
+    sudo mv /var/www/html/admin/ /var/www/html/[NEW NAME]/
+    sudo nano /var/www/html/[NEW NAME]/config.php 
+        // Change 
+        define('HTTP_SERVER', 'http://kanbancart.com/admin/');
+        define('DIR_APPLICATION', DIR_OPENCART . 'admin/');
+        // To
+        define('HTTP_SERVER', 'http://kanbancart.com/[NEW NAME]/');
+        define('DIR_APPLICATION', DIR_OPENCART . '[NEW NAME]/');
+19JUN2023:
+Set html/ permissions
+    // !! Verify this.
+    cd /var/www/html
+    // Change owner:group.
+    sudo -R chown www-data:www-data ./*
+    // Add www-data and user read, write, execute to all directories.
+    sudo find /var/www/html -type d -exec chmod u+rwx {} +
+    sudo find /var/www/html -type d -execdir setfacl -m u:jordan:rwx -m o::--- {} +
+    // Add www-data and user read, write to all files.
+    sudo find /var/www/html -type f -exec chmod u+rw {} +
+    sudo find /var/www/html -type f -exec setfacl -m u:jordan:rw -m o::--- {} +
+    // Set GID so future files maintain permissions.
+    sudo find /var/www/html -type d -exec chmod g+s {} +
