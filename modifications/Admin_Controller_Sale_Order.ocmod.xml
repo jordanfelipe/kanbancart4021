@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>Admin Controller Sale Order</name>
+    <code>admin_controller_sale_order</code>
+    <version>1.0</version>
+    <author>Jordan Felipe</author>
+    <link>https://jordanfelipe.com</link>
+    <file path="admin/controller/sale/order.php">
+		<!-- Get `location` value. -->
+        <operation>
+            <search><![CDATA[
+                'quantity'                 => $product['quantity'],
+            ]]></search>
+            <add position="before"><![CDATA[
+                'location'                 => $this->model_sale_order->getLocation($product['model']),
+            ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[
+                'quantity' 		=> $product['quantity'],
+            ]]></search>
+            <add position="before"><![CDATA[
+                'location'      => $this->model_sale_order->getLocation($product['model']),
+            ]]></add>
+        </operation>
+        <operation>
+            <search index="0"><![CDATA[
+                'quantity'     => $product['quantity'],
+            ]]></search>
+            <add position="before"><![CDATA[
+                'location'     => $this->model_sale_order->getLocation($product['model']),
+            ]]></add>
+        </operation>
+
+        <!-- Define `location` column and label. -->
+        <operation>
+            <search><![CDATA[
+                $data['entry_quantity'] = $this->language->get('entry_quantity');
+            ]]></search>
+            <add position="before"><![CDATA[
+                $data['entry_location'] = $this->language->get('entry_location');
+            ]]></add>
+        </operation>
+        <operation>
+            <search index="0,1,2"><![CDATA[
+                $data['column_quantity'] = $this->language->get('column_quantity');
+            ]]></search>
+            <add position="before"><![CDATA[
+                $data['column_location'] = $this->language->get('column_location');
+            ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[
+                $data['text_mpn'] = $this->language->get('text_mpn');
+            ]]></search>
+            <add position="after"><![CDATA[
+                $data['text_location'] = $this->language->get('text_location');
+            ]]></add>
+        </operation>
+
+        <!-- Define `button_partial_order` tool tip. -->
+<!-- 21JUN2023
+        <operation>
+            <search><![CDATA[
+                $data['button_edit'] = $this->language->get('button_edit');
+            ]]></search>
+            <add position="after"><![CDATA[
+                $data['button_partial_order'] = $this->language->get('button_partial_order');
+            ]]></add>
+        </operation>
+-->
+
+        <!-- Direct `partial` button function. -->
+<!-- 21JUN2023
+        <operation>
+            <search><![CDATA[
+                $data['edit'] = $this->url->link('sale/order/edit', 'token=' . $this->session->data['token'] . '&order_id=' . (int)$this->request->get['order_id'], true)
+            ]]></search>
+            <add position="after"><![CDATA[
+                $data['partial'] = $this->url->link('sale/order_partial', 'token=' . $this->session->data['token'] . '&order_id=' . (int)$this->request->get['order_id'], true);
+            ]]></add>
+        </operation>
+-->
+		
+        <!-- Format timestamp in appropriate timezone. -->
+<!-- 21JUN2023
+        <operation>
+            <search><![CDATA[
+                'date_added'    => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
+            ]]></search>
+            <add position="replace"><![CDATA[
+                'date_added' => date_format(date_timezone_set(date_create($result['date_added'], timezone_open("UTC")), timezone_open("America/Los_Angeles")), $this->language->get('date_format_short')),
+            ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[
+                'date_modified' => date($this->language->get('date_format_short'), strtotime($result['date_modified'])),
+            ]]></search>
+            <add position="replace"><![CDATA[
+                'date_modified' => date_format(date_timezone_set(date_create($result['date_modified'], timezone_open("UTC")), timezone_open("America/Los_Angeles")), $this->language->get('date_format_short')),
+            ]]></add>
+        </operation>
+		<operation>
+            <search><![CDATA[
+                'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
+            ]]></search>
+            <add position="replace"><![CDATA[
+                'date_added' => date_format(date_timezone_set(date_create($result['date_added'], timezone_open("UTC")), timezone_open("America/Los_Angeles")), $this->language->get('date_format_short'))
+            ]]></add>
+        </operation>
+-->
+        
+        <!-- Unit of Measure -->
+        <operation info="Add uom value assignment.">
+            <search><![CDATA[
+                'quantity'   => $product['quantity'],
+            ]]></search>
+            <add position="after"><![CDATA[
+                'uom'        => $product['uom'],
+            ]]></add>
+        </operation>
+        <operation info="Add uom value assignment.">
+            <search><![CDATA[
+                'quantity'         => $product['quantity'],
+            ]]></search>
+            <add position="after"><![CDATA[
+                'uom'              => $product['uom'],
+            ]]></add>
+        </operation>
+        <operation info="Add uom value assignment.">
+            <search><![CDATA[
+                'quantity' => $product['quantity'],
+            ]]></search>
+            <add position="after"><![CDATA[
+                'uom'      => $product['uom'],
+            ]]></add>
+        </operation>
+		
+		<!-- Add `button_submit` -->
+        <operation info="Load button_submit from language file.">
+            <search><![CDATA[
+                $data['button_history_add'] = $this->language->get('button_history_add');
+            ]]></search>
+            <add position="after"><![CDATA[
+                $data['button_submit'] = $this->language->get('button_submit');
+            ]]></add>
+        </operation>
+		
+		<!-- Add UOM to getForm() -->
+        <operation info="Define UOM column.">
+            <search><![CDATA[
+                $data['column_quantity'] = $this->language->get('column_quantity');
+            ]]></search>
+            <add position="after"><![CDATA[
+                $data['column_uom'] = $this->language->get('column_uom');
+            ]]></add>
+        </operation>
+		<operation info="Set UOM value.">
+            <search><![CDATA[
+                'quantity'   => $product['quantity'],
+            ]]></search>
+            <add position="after"><![CDATA[
+                'uom'   => $product['uom'],
+            ]]></add>
+        </operation>
+		
+		<!-- Add requester to getForm() -->
+<!-- 21JUN2023
+        <operation info="Define requester entry.">
+            <search><![CDATA[
+                $data['entry_comment'] = $this->language->get('entry_comment');
+            ]]></search>
+            <add position="after"><![CDATA[
+                $data['entry_requester'] = $this->language->get('entry_requester');
+            ]]></add>
+        </operation>
+		<operation info="Define requester text.">
+            <search><![CDATA[
+                $data['text_comment'] = $this->language->get('text_comment');
+            ]]></search>
+            <add position="after"><![CDATA[
+                $data['text_requester'] = $this->language->get('text_requester');
+            ]]></add>
+        </operation>
+		<operation info="Set requester value.">
+            <search><![CDATA[
+                $data['comment'] = $order_info['comment'];
+            ]]></search>
+            <add position="after"><![CDATA[
+                $data['requester'] = $order_info['requester'];
+            ]]></add>
+        </operation>
+		<operation info="Set requester value.">
+            <search><![CDATA[
+                $data['comment'] = nl2br($order_info['comment']);
+            ]]></search>
+            <add position="after"><![CDATA[
+                $data['requester'] = $order_info['requester'];
+            ]]></add>
+        </operation>
+		<operation info="Set requester value for invoice.">
+            <search><![CDATA[
+                'comment'          => nl2br($order_info['comment'])
+            ]]></search>
+            <add position="after"><![CDATA[
+                'requester'          => nl2br($order_info['requester'])
+            ]]></add>
+        </operation>
+		<operation info="Set requester value blank if no value exists.">
+            <search><![CDATA[
+                $data['comment'] = '';
+            ]]></search>
+            <add position="after"><![CDATA[
+                $data['requester'] = '';
+            ]]></add>
+        </operation>
+-->
+    </file>  
+</modification>
