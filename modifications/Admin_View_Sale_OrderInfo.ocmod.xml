@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>Admin View Sale Order Info</name>
+    <code>admin_view_sale_order_info</code>
+    <version>1.0</version>
+    <author>Jordan Felipe</author>
+    <link>https://jordanfelipe.com</link>
+    <file path="admin/view/template/sale/order_info.tpl">
+        <!-- Add `location` column and information to `order_info` page. -->
+        <operation>
+            <search><![CDATA[
+                <td class="text-start">{{ column_model }}</td>
+            ]]></search>
+            <add position="after"><![CDATA[
+                <td class="text-start">{{ column_location }}</td>
+            ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[
+                <td class="text-start">{{ order_product.model }}</td>
+            ]]></search>
+            <add position="after"><![CDATA[
+                <td class="text-start">{{ order_product.location }}</td>
+            ]]></add>
+        </operation>
+
+		<!-- Add `partial_order` button to top buttons on `order_info` page. -->
+<!-- JF 21JUN2023 
+        <operation>
+            <search><![CDATA[
+                <div class="pull-right"><a href="<?php echo $invoice; ?>" target="_blank" data-toggle="tooltip" title="<?php echo $button_invoice_print; ?>" class="btn btn-info"><i class="fa fa-print"></i></a> <a href="<?php echo $shipping; ?>" target="_blank" data-toggle="tooltip" title="<?php echo $button_shipping_print; ?>" class="btn btn-info"><i class="fa fa-truck"></i></a> <a href="<?php echo $edit; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a> <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+            ]]></search>
+            <add position="replace"><![CDATA[
+                <div class="pull-right"><a href="<?php echo $invoice; ?>" target="_blank" data-toggle="tooltip" title="<?php echo $button_invoice_print; ?>" class="btn btn-info"><i class="fa fa-print"></i></a> <a href="<?php echo $shipping; ?>" target="_blank" data-toggle="tooltip" title="<?php echo $button_shipping_print; ?>" class="btn btn-info"><i class="fa fa-truck"></i></a> <a href="<?php echo $edit; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-info"><i class="fa fa-pencil"></i></a> <a href="<?php echo $partial; ?>" data-toggle="tooltip" title="<?php echo $button_partial_order; ?>" class="btn btn-primary"><i class="fa fa-list-ul"></i></a> <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+            ]]></add>
+        </operation>
+-->
+        
+		<!-- Add UOM to `quantity`. -->
+        <operation>
+            <search><![CDATA[
+                <td class="text-end">{{ order_product.quantity }}</td>
+            ]]></search>
+            <add position="replace"><![CDATA[
+                <td class="text-end">{{ order_product.quantity }} x {{ order_product.quantity }}</td>
+            ]]></add>
+        </operation>
+		
+		<!-- Change `button_history_add` to `button_submit`. -->
+        <operation>
+            <search><![CDATA[
+                <button type="submit" id="button-history" class="btn btn-primary"><i class="fa-solid fa-plus-circle"></i> {{ button_history_add }}</button>
+            ]]></search>
+            <add position="replace"><![CDATA[
+                <button type="submit" id="button-history" class="btn btn-primary"><i class="fa-solid fa-plus-circle"></i> {{ button_submit }}</button>
+            ]]></add>
+        </operation>
+
+		<!-- Display requester information. -->
+<!-- JF 21JUN2023
+		<operation info="Create requester box.">
+            <search><![CDATA[
+                <?php if ($comment) { ?>
+            ]]></search>
+            <add position="before"><![CDATA[
+		<?php if ($requester) { ?>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td><?php echo $text_requester; ?></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><?php echo $requester; ?></td>
+            </tr>
+          </tbody>
+        </table>
+        <?php } ?>
+            ]]></add>
+        </operation>
+-->
+    </file>  
+</modification>

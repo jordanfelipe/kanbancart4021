@@ -74,12 +74,12 @@ Rename admin directory
         // To
         define('HTTP_SERVER', 'http://kanbancart.com/[NEW NAME]/');
         define('DIR_APPLICATION', DIR_OPENCART . '[NEW NAME]/');
-19JUN2023:
+19JUN2023: (20JUN2023: Clean up and tested entries.)
 Set html/ permissions
     // !! Verify this.
     cd /var/www/html
     // Change owner:group.
-    sudo -R chown www-data:www-data ./*
+    sudo -R chown www-data:www-data ./
     // Add www-data and user read, write, execute to all directories.
     sudo find /var/www/html -type d -exec chmod u+rwx {} +
     sudo find /var/www/html -type d -execdir setfacl -m u:jordan:rwx -m o::--- {} +
@@ -88,3 +88,11 @@ Set html/ permissions
     sudo find /var/www/html -type f -exec setfacl -m u:jordan:rw -m o::--- {} +
     // Set GID so future files maintain permissions.
     sudo find /var/www/html -type d -exec chmod g+s {} +
+20JUN2023: 
+    // !! Check this last command. Group flag s bit is set (-s-), but confirm it works. 
+User jordan can rwx as needed.
+www-data seems to be forbidden. 
+www-data user:group is currently www-data:www-data.
+21JUN2023:
+/var/www/html user:group had to be updated to www-data:www-data
+    sudo chown www-data:www-data /var/www/html/
