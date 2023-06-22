@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <!-- Replaces Add Location Admin Language -->
+    <name>Admin Language Sale Order</name>
+    <code>admin_language_sale_order</code>
+    <version>1.0</version>
+    <author>Jordan Felipe</author>
+    <link>https://jordanfelipe.com</link>
+    <file path="admin/language/en-gb/sale/order.php">
+        <operation>
+            <search><![CDATA[
+                $_['text_mpn']                   = 'MPN:';
+            ]]></search>
+            <add position="after"><![CDATA[
+                $_['text_location']              = 'Location:';
+            ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[
+                $_['entry_quantity']             = 'Quantity';
+            ]]></search>
+            <add position="before"><![CDATA[
+                $_['entry_location']             = 'Location';
+            ]]></add>
+        </operation>
+		
+		<!-- Add requester language variables -->
+        <operation info="Define requester text.">
+            <search><![CDATA[
+                $_['text_comment']               = 'Customer Comment';
+            ]]></search>
+            <add position="after"><![CDATA[
+                $_['text_requester']             = 'Requested By';
+            ]]></add>
+        </operation>
+		<operation info="Define requester entry.">
+            <search><![CDATA[
+                $_['entry_comment']              = 'Comment';
+            ]]></search>
+            <add position="after"><![CDATA[
+                $_['entry_requester']            = 'Requester';
+            ]]></add>
+        </operation>
+    </file>  
+</modification>
