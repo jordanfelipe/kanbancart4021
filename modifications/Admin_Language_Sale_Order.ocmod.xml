@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <modification>
-    <!-- Replaces Add Location Admin Language -->
     <name>Admin Language Sale Order</name>
     <code>admin_language_sale_order</code>
     <version>1.0</version>
     <author>Jordan Felipe</author>
     <link>https://jordanfelipe.com</link>
+<!-- Change path to use DIR_APPLICATION. -->
+    <!-- Add location language variables. -->
     <file path="admin/language/en-gb/sale/order.php">
         <operation>
             <search><![CDATA[
-                $_['text_mpn']                   = 'MPN:';
+                $_['column_quantity']            = 'Quantity';
             ]]></search>
             <add position="after"><![CDATA[
-                $_['text_location']              = 'Location:';
+                $_['column_location']            = 'Location:';
             ]]></add>
         </operation>
         <operation>
@@ -24,7 +25,8 @@
             ]]></add>
         </operation>
 		
-		<!-- Add requester language variables -->
+		<!-- Add requester language variables. -->
+<!--
         <operation info="Define requester text.">
             <search><![CDATA[
                 $_['text_comment']               = 'Customer Comment';
@@ -41,5 +43,6 @@
                 $_['entry_requester']            = 'Requester';
             ]]></add>
         </operation>
+-->
     </file>  
 </modification>

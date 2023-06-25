@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>Admin Model Sale Order</name>
+    <code>admin_model_sale_order</code>
+    <version>1.0</version>
+    <author>Jordan Felipe</author>
+    <link>https://jordanfelipe.com</link>
+    <file path="admin/model/sale/order.php">
+        <operation>
+            <search><![CDATA[
+                public function getOrderProducts($order_id) {
+            ]]></search>
+            <add position="before"><![CDATA[
+                
+                public function getLocation($model) {
+                    $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product WHERE model = '" . $model . "'");
+                    
+                    if($query->row['location']) {
+                        return $query->row['location'];
+                    }
+                    else {
+                        return "Not Found";
+                    }
+                }
+        
+            ]]></add>
+        </operation>
+		
+		<!-- Add `requester` variable -->
+<!--
+        <operation info="Add `order`.`request` assignment.">
+            <search><![CDATA[
+                'comment'                 => $order_query->row['comment'],
+            ]]></search>
+            <add position="after"><![CDATA[
+                'requester'               => $order_query->row['requester'],
+            ]]></add>
+        </operation>
+-->
+    </file>  
+</modification>
