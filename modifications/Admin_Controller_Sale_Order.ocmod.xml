@@ -12,7 +12,7 @@
                 'quantity'                 => $product['quantity'],
             ]]></search>
             <add position="before"><![CDATA[
-                'location'                 => $this->model_sale_order->getLocation($product['model']),
+                'location'                 => $this->model_sale_order->getLocation($product['product_id']),
             ]]></add>
         </operation>
         <operation>
@@ -20,7 +20,7 @@
                 'quantity' 		=> $product['quantity'],
             ]]></search>
             <add position="before"><![CDATA[
-                'location'      => $this->model_sale_order->getLocation($product['model']),
+                'location'      => $this->model_sale_order->getLocation($product['product_id']),
             ]]></add>
         </operation>
         <operation>
@@ -28,7 +28,7 @@
                 'quantity'     => $product['quantity'],
             ]]></search>
             <add position="before"><![CDATA[
-                'location'     => $this->model_sale_order->getLocation($product['model']),
+                'location'     => $this->model_sale_order->getLocation($product['product_id']),
             ]]></add>
         </operation>
 

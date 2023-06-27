@@ -96,3 +96,6 @@ www-data user:group is currently www-data:www-data.
 21JUN2023:
 /var/www/html user:group had to be updated to www-data:www-data
     sudo chown www-data:www-data /var/www/html/
+26JUN2023:
+Currently working on modifications. 
+Significant structural changes have been made. 

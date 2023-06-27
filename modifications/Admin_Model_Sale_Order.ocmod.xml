@@ -8,12 +8,12 @@
     <file path="admin/model/sale/order.php">
         <operation>
             <search><![CDATA[
-                public function getOrderProducts($order_id) {
+                public function getProducts(int $order_id): array {
             ]]></search>
             <add position="before"><![CDATA[
                 
-                public function getLocation($model) {
-                    $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product WHERE model = '" . $model . "'");
+                public function getLocation(int $product_id): string {
+                    $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product WHERE product_id = '" . $product_id . "'");
                     
                     if($query->row['location']) {
                         return $query->row['location'];
