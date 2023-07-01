@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>Admin Language En-GB</name>
+    <code>admin_language_en-gb</code>
+    <version>1.0</version>
+    <author>Jordan Felipe</author>
+    <link>https://jordanfelipe.com</link>
+    <file path="admin/language/en-gb/default.php">
+    <!--
+        <operation>
+            <search><![CDATA[
+                $_['button_order_recurring']        = 'View Recurring Order';
+            ]]></search>
+            <add position="after"><![CDATA[
+                $_['button_order_placed']           = 'Order Placed';
+            ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[
+                $_['button_order_recurring']        = 'View Recurring Order';
+            ]]></search>
+            <add position="after"><![CDATA[
+                $_['button_partial_order']          = 'Partial Order Pickup';
+            ]]></add>
+        </operation>
+    -->
+    <!-- Change date formats to US. -->
+        <operation>
+            <search><![CDATA[
+                $_['date_format_long']              = 'l jS F Y';
+            ]]></search>
+            <add position="replace"><![CDATA[
+                $_['date_format_long']              = 'l F dS Y';
+            ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[
+                $_['date_format_short']             = 'd/m/Y';
+            ]]></search>
+            <add position="replace"><![CDATA[
+                $_['date_format_short']             = 'm/d/Y @ H:i';
+            ]]></add>
+        </operation>
+    </file>  
+</modification>

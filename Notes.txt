@@ -135,6 +135,9 @@ Alternate settings: {
             // Repeat above
         sudo chmod 770 config.php
 }
-
 28JUN2023:
 Site reloaded with 4.0.2.1. Loaded clicker_vqmod_manager.ocmod without renaming admin directory. 
+30JUN2021:
+php-xml Package is needed for the vQmod manager.
+Check out this "SEO URL".
+Date added/modified format to be changed to MM/DD/YYYY hh:mm.
