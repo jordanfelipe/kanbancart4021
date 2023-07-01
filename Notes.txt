@@ -22,7 +22,7 @@ To allow ssh with key, generate ssh files.
 SSH in.
 Update system.
 Install AMP+.
-    Packages: 'php, apache2, mariadb-server, php-mysql, php-curl, php-gd, php-zip'
+    Packages: 'php, apache2, mariadb-server, php-mysql, php-curl, php-gd, php-xml, php-zip'
 MariaDB setup.
     sudo mysql_secure_installation
     // Don't set root password.
@@ -79,7 +79,7 @@ Set html/ permissions
     // !! Verify this.
     cd /var/www/html
     // Change owner:group.
-    sudo -R chown www-data:www-data ./
+    sudo chown -R www-data:www-data ./
     // Add www-data and user read, write, execute to all directories.
     sudo find /var/www/html -type d -exec chmod u+rwx {} +
     sudo find /var/www/html -type d -execdir setfacl -m u:jordan:rwx -m o::--- {} +
@@ -99,3 +99,42 @@ www-data user:group is currently www-data:www-data.
 26JUN2023:
 Currently working on modifications. 
 Significant structural changes have been made. 
+OCMOD was removed in v4.0. The replacement is Events which initially seem to be insufficient.
+There is a vQmod extension available. Extension breaks after step 1 vQmod installation.
+May be due to non-default naming of 'admin' directory.
+Reloaded site using official release 4.0.2.1. I will try not renaming the 'admin' directory. Also, I wanted to use a more stable release base. 
+Don't forget to read your own instructions.
+Site reloaded. Trying clicker_vqmod_manager.ocmod first without renaming 'admin' directory.
+Alternate settings: {
+    Follow install instructions INSTALL.md.
+    
+    Set html/ permissions
+        // !! Verify this.
+        cd /var/www/html
+        // Change owner:group.
+        sudo chown -R www-data:www-data ./
+        // Add www-data and user read, write, execute to all directories.
+        sudo find /var/www/html -type d -exec chmod 770 {} +
+        sudo find /var/www/html -type d -execdir setfacl -m u:jordan:rwx -m o::--- {} +
+        // Add www-data and user read, write to all files.
+        sudo find /var/www/html -type f -exec chmod 660 {} +
+        sudo find /var/www/html -type f -exec setfacl -m u:jordan:rw -m o::--- {} +
+        // Set GID so future files maintain permissions.
+        sudo find /var/www/html -type d -exec chmod g+s {} +
+    Move storage directory.
+        // In /var/www/html/[HTML_FOLDER] when separating sites.
+        sudo mv /var/www/html/system/storage/ /var/www/html/storage-main/
+        sudo nano /var/www/html/config.php 
+            // Change
+            define('DIR_STORAGE', DIR_OPENCART . 'storage/');
+            // To
+            define('DIR_STORAGE', '/var/www/storage-main/');
+        sudo chmod 770 config.php
+        cd admin/
+        sudo nano /var/www/html/admin/config.php
+            // Repeat above
+        sudo chmod 770 config.php
+}
+
+28JUN2023:
+Site reloaded with 4.0.2.1. Loaded clicker_vqmod_manager.ocmod without renaming admin directory. 
