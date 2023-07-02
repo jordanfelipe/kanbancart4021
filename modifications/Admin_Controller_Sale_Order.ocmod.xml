@@ -14,7 +14,8 @@
             ]]></search>
             <!-- This should be easy, but how do I access the indexes of this returned array? -->
             <add position="before"><![CDATA[
-                'location'                 => $this->model_sale_order->getProductInfo($product['product_id']),
+                'location'                 => $this->model_sale_order->getLocation($product['product_id']),
+                'uom'                      => $this->model_sale_order->getUOM($product['product_id']),
             ]]></add>
         </operation>
         <operation>
@@ -22,7 +23,8 @@
                 'quantity' 		=> $product['quantity'],
             ]]></search>
             <add position="before"><![CDATA[
-                'location'      => $this->model_sale_order->getProductInfo($product['product_id']),
+                'location'      => $this->model_sale_order->getLocation($product['product_id']),
+                'uom'           => $this->model_sale_order->getUOM($product['product_id']),
             ]]></add>
         </operation>
         <operation>
@@ -30,7 +32,8 @@
                 'quantity' 		=> $product['quantity'],
             ]]></search>
             <add position="before"><![CDATA[
-                'location'      => $this->model_sale_order->getProductInfo($product['product_id']),
+                'location'      => $this->model_sale_order->getLocation($product['product_id']),
+                'uom'           => $this->model_sale_order->getUOM($product['product_id']),
             ]]></add>
         </operation>
 

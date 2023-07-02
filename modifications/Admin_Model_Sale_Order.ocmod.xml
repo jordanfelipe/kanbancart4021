@@ -13,20 +13,25 @@
             ]]></search>
             <add position="before"><![CDATA[
                 
-                public function getProductInfo(int $product_id): array {
+                public function getLocation(int $product_id): string {
                     $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product WHERE product_id = '" . $product_id . "'");
                     
                     if($query->num_rows) {
-                        foreach ($query->rows as $row) {
-                            $product_info[] = [
-                                'location' => $row['location'],
-                                'uom' => $row['uom']
-                            ];
-                        }
-                        return $product_info;
+                        return $query->row['location'];
                     }
                     else {
-                        return [];
+                        return '';
+                    }
+                }
+
+                public function getUOM(int $product_id): string {
+                    $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product WHERE product_id = '" . $product_id . "'");
+                    
+                    if($query->num_rows) {
+                        return $query->row['uom'];
+                    }
+                    else {
+                        return '';
                     }
                 }
         
