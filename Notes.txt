@@ -123,7 +123,7 @@ Alternate settings: {
         sudo find /var/www/html -type d -exec chmod g+s {} +
     Move storage directory.
         // In /var/www/html/[HTML_FOLDER] when separating sites.
-        sudo mv /var/www/html/system/storage/ /var/www/html/storage-main/
+        sudo mv /var/www/html/system/storage/ /var/www/storage-main/
         sudo nano /var/www/html/config.php 
             // Change
             define('DIR_STORAGE', DIR_OPENCART . 'storage/');
@@ -141,3 +141,10 @@ Site reloaded with 4.0.2.1. Loaded clicker_vqmod_manager.ocmod without renaming 
 php-xml Package is needed for the vQmod manager.
 Check out this "SEO URL".
 Date added/modified format to be changed to MM/DD/YYYY hh:mm.
+Modifications need an <id> tag.
+    Example: <id>admin_language_en-gb</id>
+01JUL2023:
+I forgot to replace the db-schema.php file. 
+Reloading site for practice rather than adding columns which is more time-consuming.
+Site reloaded with admin/ folder name changed. Worked out of the box due to the pathReplaces.php if statement.
+TODO: Make a separate function call for each additional piece of information in Admin_Controller_Sale_Order.ocmod.xml. Currently, '$this->model_sale_order->getProductInfo' call returns array.

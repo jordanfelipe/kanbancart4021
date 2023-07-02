@@ -2,6 +2,7 @@
 <modification>
     <name>Admin Language Sale Order</name>
     <code>admin_language_sale_order</code>
+    <id>admin_language_sale_order</id>
     <version>1.0</version>
     <author>Jordan Felipe</author>
     <link>https://jordanfelipe.com</link>

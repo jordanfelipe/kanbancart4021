@@ -2,6 +2,7 @@
 <modification>
     <name>Admin Controller Sale Order</name>
     <code>admin_controller_sale_order</code>
+    <id>admin_controller_sale_order</id>
     <version>1.0</version>
     <author>Jordan Felipe</author>
     <link>https://jordanfelipe.com</link>
@@ -11,8 +12,9 @@
             <search><![CDATA[
                 'quantity'                 => $product['quantity'],
             ]]></search>
+            <!-- This should be easy, but how do I access the indexes of this returned array? -->
             <add position="before"><![CDATA[
-                'location'                 => $this->model_sale_order->getLocation($product['product_id']),
+                'location'                 => $this->model_sale_order->getProductInfo($product['product_id']),
             ]]></add>
         </operation>
         <operation>
@@ -20,15 +22,15 @@
                 'quantity' 		=> $product['quantity'],
             ]]></search>
             <add position="before"><![CDATA[
-                'location'      => $this->model_sale_order->getLocation($product['product_id']),
+                'location'      => $this->model_sale_order->getProductInfo($product['product_id']),
             ]]></add>
         </operation>
         <operation>
-            <search index="0"><![CDATA[
-                'quantity'     => $product['quantity'],
+            <search><![CDATA[
+                'quantity' 		=> $product['quantity'],
             ]]></search>
             <add position="before"><![CDATA[
-                'location'     => $this->model_sale_order->getLocation($product['product_id']),
+                'location'      => $this->model_sale_order->getProductInfo($product['product_id']),
             ]]></add>
         </operation>
 
@@ -115,6 +117,7 @@ Check admin/view/template/sale/order_info.twig
 -->
         
         <!-- Unit of Measure -->
+<!-- 01JUL2023
         <operation info="Add uom value assignment.">
             <search><![CDATA[
                 'quantity'   => $product['quantity'],
@@ -139,8 +142,9 @@ Check admin/view/template/sale/order_info.twig
                 'uom'      => $product['uom'],
             ]]></add>
         </operation>
-		
+-->
 		<!-- Add `button_submit` -->
+<!-- 01JUL2023
         <operation info="Load button_submit from language file.">
             <search><![CDATA[
                 $data['button_history_add'] = $this->language->get('button_history_add');
@@ -149,8 +153,9 @@ Check admin/view/template/sale/order_info.twig
                 $data['button_submit'] = $this->language->get('button_submit');
             ]]></add>
         </operation>
-		
+-->		
 		<!-- Add UOM to getForm() -->
+<!-- 01JUL2023
         <operation info="Define UOM column.">
             <search><![CDATA[
                 $data['column_quantity'] = $this->language->get('column_quantity');
@@ -167,7 +172,8 @@ Check admin/view/template/sale/order_info.twig
                 'uom'   => $product['uom'],
             ]]></add>
         </operation>
-		
+-->
+
 		<!-- Add requester to getForm() -->
 <!-- 21JUN2023
         <operation info="Define requester entry.">

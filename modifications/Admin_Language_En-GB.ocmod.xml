@@ -2,6 +2,7 @@
 <modification>
     <name>Admin Language En-GB</name>
     <code>admin_language_en-gb</code>
+    <id>admin_language_en-gb</id>
     <version>1.0</version>
     <author>Jordan Felipe</author>
     <link>https://jordanfelipe.com</link>

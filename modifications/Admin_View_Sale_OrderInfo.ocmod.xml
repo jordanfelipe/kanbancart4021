@@ -2,10 +2,11 @@
 <modification>
     <name>Admin View Sale Order Info</name>
     <code>admin_view_sale_order_info</code>
+    <id>admin_view_sale_order_info</id>
     <version>1.0</version>
     <author>Jordan Felipe</author>
     <link>https://jordanfelipe.com</link>
-    <file path="admin/view/template/sale/order_info.tpl">
+    <file path="admin/view/template/sale/order_info.twig">
         <!-- Add `location` column and information to `order_info` page. -->
         <operation>
             <search><![CDATA[
@@ -42,7 +43,7 @@
                 <td class="text-end">{{ order_product.quantity }}</td>
             ]]></search>
             <add position="replace"><![CDATA[
-                <td class="text-end">{{ order_product.quantity }} x {{ order_product.quantity }}</td>
+                <td class="text-end">{{ order_product.quantity }} x {{ order_product.uom }}</td>
             ]]></add>
         </operation>
 		

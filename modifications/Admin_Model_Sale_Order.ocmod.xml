@@ -2,6 +2,7 @@
 <modification>
     <name>Admin Model Sale Order</name>
     <code>admin_model_sale_order</code>
+    <id>admin_model_sale_order</id>
     <version>1.0</version>
     <author>Jordan Felipe</author>
     <link>https://jordanfelipe.com</link>
@@ -12,14 +13,20 @@
             ]]></search>
             <add position="before"><![CDATA[
                 
-                public function getLocation(int $product_id): string {
+                public function getProductInfo(int $product_id): array {
                     $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product WHERE product_id = '" . $product_id . "'");
                     
-                    if($query->row['location']) {
-                        return $query->row['location'];
+                    if($query->num_rows) {
+                        foreach ($query->rows as $row) {
+                            $product_info[] = [
+                                'location' => $row['location'],
+                                'uom' => $row['uom']
+                            ];
+                        }
+                        return $product_info;
                     }
                     else {
-                        return "Not Found";
+                        return [];
                     }
                 }
         
