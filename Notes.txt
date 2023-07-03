@@ -148,3 +148,9 @@ I forgot to replace the db-schema.php file.
 Reloading site for practice rather than adding columns which is more time-consuming.
 Site reloaded with admin/ folder name changed. Worked out of the box due to the pathReplaces.php if statement.
 TODO: Make a separate function call for each additional piece of information in Admin_Controller_Sale_Order.ocmod.xml. Currently, '$this->model_sale_order->getProductInfo' call returns array.
+02JUL2023:
+Got Admin_Sale_Order modifications working. 
+Using separate functions for each custom information. 
+TODO: Make a single function to do this. Handling arrays makes a bit more sense now. Perform one inital call to the function. 
+    Query and distribute `uom` variables.
+    Rewrite javascript to auto-complete certain fields. Try using existing id/class.
