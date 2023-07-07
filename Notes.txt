@@ -154,3 +154,9 @@ Using separate functions for each custom information.
 TODO: Make a single function to do this. Handling arrays makes a bit more sense now. Perform one inital call to the function. 
     Query and distribute `uom` variables.
     Rewrite javascript to auto-complete certain fields. Try using existing id/class.
+04JUL2023:
+Used Let's Encrypt via certbot to get SSL. Upsdate the config.php files messily. 
+Front end works. 
+Admin Login and password reset are not working. Error referenced not "username and/or password" found. 
+06JUL2023:
+!! Compare db_schema of current git version to stable 4.0.2.1 verson. 
