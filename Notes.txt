@@ -160,3 +160,9 @@ Front end works.
 Admin Login and password reset are not working. Error referenced not "username and/or password" found. 
 06JUL2023:
 !! Compare db_schema of current git version to stable 4.0.2.1 verson. 
+08JUL2023:
+Might reload site. 
+Rename admin directory: 
+    sudo mv /var/www/html/admin /var/www/html/[NEW NAME]
+    nano /var/www/html/config.php
+    nano /var/www/html/[NEW_NAME]/config.php
