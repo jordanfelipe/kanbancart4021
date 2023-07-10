@@ -166,3 +166,10 @@ Rename admin directory:
     sudo mv /var/www/html/admin /var/www/html/[NEW NAME]
     nano /var/www/html/config.php
     nano /var/www/html/[NEW_NAME]/config.php
+09JUL2023:
+Reloaded site. SSL issue persists.
+Try disabling SSL delivery on server. 
+I didn't follow the "# Install Opencart" instruction.
+Deleted SSL certificate. Used Private Window. successfully got 'http://kanbancart.com' to load.
+Admin side sending blank page after renaming and reconfiguring admin/ directory name. 
+    I havent't seen this before. Check configuration files and spelling throughout. 
