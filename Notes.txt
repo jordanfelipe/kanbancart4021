@@ -171,5 +171,20 @@ Reloaded site. SSL issue persists.
 Try disabling SSL delivery on server. 
 I didn't follow the "# Install Opencart" instruction.
 Deleted SSL certificate. Used Private Window. successfully got 'http://kanbancart.com' to load.
-Admin side sending blank page after renaming and reconfiguring admin/ directory name. 
+Admin side sending blank page via http after renaming and reconfiguring admin/ directory name. 
     I havent't seen this before. Check configuration files and spelling throughout. 
+10JUL2023: 
+Reloading site.
+I think I uploaded the wrong kanban 'upload' directory. The one from ~/tmp rather than ~/Documents/KanbanCart. 
+Updating KC_INSTALL.sh.
+Worked using the correct kanban 'upload' directory. Additionally, the built in move/delete/rename features worked minus the special permissions.
+    These auto features mess up the ACL permissions. 
+Got it working. Change the urls from 'http://...' to 'https://...'. Don't change or add variables. That is what I did a previous time. 
+Seeing if changing timezone seting changes displayed times. 
+    Chaning timezone from UTC to America/Los_Angeles turns any mention of "Free Test" throws an error. 
+        Warning: Undefined array key "image" in /var/www/html/catalog/controller/product/search.php on line 193
+            Unknown: html_entity_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /var/www/html/catalog/controller/product/search.php on line 193
+        Warning: Undefined array key "price" in /var/www/html/catalog/controller/product/search.php on line 200
+        Warning: Undefined array key "tax_class_id" in /var/www/html/catalog/controller/product/search.php on line 200
+        TypeError: Opencart\System\Library\Cart\Tax::calculate(): Argument #1 ($value) must be of type float, null given, called in /var/www/html/catalog/controller/product/search.php on line 200 in /var/www/html/system/library/cart/tax.php on line 93
+Changing timezone back to UTC.
