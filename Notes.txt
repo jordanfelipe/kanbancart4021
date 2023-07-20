@@ -188,3 +188,17 @@ Seeing if changing timezone seting changes displayed times.
         Warning: Undefined array key "tax_class_id" in /var/www/html/catalog/controller/product/search.php on line 200
         TypeError: Opencart\System\Library\Cart\Tax::calculate(): Argument #1 ($value) must be of type float, null given, called in /var/www/html/catalog/controller/product/search.php on line 200 in /var/www/html/system/library/cart/tax.php on line 93
 Changing timezone back to UTC.
+    Performed further tesing. Checked database, only image was blank. Tried selecting image, changing tax_class_id, meta tag title, price to no avail. 
+    It seems the lowest common denominator is that changing the timezone affect (at least) new products. Maybe negative time causes an error. i.e. Item gets called before having been created. 
+    Trying a different and smaller timezone offset. Africa/Porto_Novo (+01:00) worked. Asia/Karachi (+05:00) worked. America/Nuuk (-02:00) worked. 
+    Will try setting to America/Los_Angeles later, after at least 7 hours after having created product. Reverted product changes. 
+    Tested with Africa/Porto_Novo and time change are not retroactive, order times are written at the time of the action, see date_modified earlier than date_added for oder_id = 3. 
+    UTC order placed at 19:45 Los_Angeles (02:45 UTC) and 19:46 Los_Angeles (03:46 Porto_Novo).
+    Conversion at read is likely better. Consider making a module for this. 
+11JUL2023:
+Working on UI.
+-Site doesn't warn of incorrect admin username/password. 
+
+When resetting base to 4.0.2.1, keep ./system/system/db_schema.php, ./image/no_image.png, ./image/placeholder.png
+
+TODO: Set no_image.png or placeholder.png as default image. 

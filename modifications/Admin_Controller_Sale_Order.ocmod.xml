@@ -92,15 +92,24 @@ Check admin/view/template/sale/order_info.twig
 -->
 		
         <!-- Format timestamp in appropriate timezone. -->
-<!-- 21JUN2023
+
         <operation>
             <search><![CDATA[
-                'date_added'    => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
+                'date_added'      => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
             ]]></search>
             <add position="replace"><![CDATA[
-                'date_added' => date_format(date_timezone_set(date_create($result['date_added'], timezone_open("UTC")), timezone_open("America/Los_Angeles")), $this->language->get('date_format_short')),
+                'date_added'      => date_format(date_timezone_set(date_create($result['date_added'], timezone_open("UTC")), timezone_open("America/Los_Angeles")), $this->language->get('date_format_short')),
             ]]></add>
         </operation>
+        <operation>
+            <search><![CDATA[
+                $data['date_added'] = date($this->language->get('date_format_short'), strtotime($order_info['date_added']));
+            ]]></search>
+            <add position="replace"><![CDATA[
+                $data['date_added'] = date_format(date_timezone_set(date_create($order_info['date_added'], timezone_open("UTC")), timezone_open("America/Los_Angeles")), $this->language->get('date_format_short')),
+            ]]></add>
+        </operation>
+<!-- Check above. Update below.-->
         <operation>
             <search><![CDATA[
                 'date_modified' => date($this->language->get('date_format_short'), strtotime($result['date_modified'])),
@@ -117,7 +126,6 @@ Check admin/view/template/sale/order_info.twig
                 'date_added' => date_format(date_timezone_set(date_create($result['date_added'], timezone_open("UTC")), timezone_open("America/Los_Angeles")), $this->language->get('date_format_short'))
             ]]></add>
         </operation>
--->
         
         <!-- Unit of Measure -->
 <!-- 01JUL2023
