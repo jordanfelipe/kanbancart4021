@@ -248,3 +248,19 @@
     - Site doesn't warn of incorrect admin username/password. 
 - When resetting base to 4.0.2.1, keep `./system/system/db_schema.php`, `./image/no_image.png`, and `./image/placeholder.png`
 - **TODO:** Set no_image.png or placeholder.png as default image. 
+
+
+### 19JUL2023: 
+
+- Warning for "no admin username/password" is working. 
+
+
+### 21JUL2023:
+
+- Research what **stores** do.
+- Multiple stores can be used for B31. 
+- Can be separted via sub-domain on VHOST.
+    - **TODO**
+    - Test Customer across multiple stores. **WORKS**
+    - Test inventory multi-use.
+    - Test email separation.
