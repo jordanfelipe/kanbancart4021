@@ -25,6 +25,34 @@
             ]]></add>
         </operation>
 
+        <!-- Define `location` column and label. -->
+        <operation>
+            <search><![CDATA[
+                $data['entry_quantity'] = $this->language->get('entry_quantity');
+                <label for="input-quantity" class="form-label">{{ entry_quantity }}</label> <input type="text" name="quantity" placeholder="{{ entry_quantity }}" value="1" id="input-quantity" class="form-control"/>
+            ]]></search>
+            <add position="before"><![CDATA[
+                $data['entry_location'] = $this->language->get('entry_location');
+                <label for="input-location" class="form-label">{{ entry_location }}</label> <input type="text" name="location" placeholder="{{ entry_location }}" value="1" id="input-location" class="form-control"/>
+            ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[
+                <td class="text-end">{{ column_quantity }}</td>
+            ]]></search>
+            <add position="before"><![CDATA[
+                <td class="text-end">{{ column_location }}</td>
+            ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[
+                $data['text_mpn'] = $this->language->get('text_mpn');
+            ]]></search>
+            <add position="after"><![CDATA[
+                $data['text_location'] = $this->language->get('text_location');
+            ]]></add>
+        </operation>
+
 		<!-- Add `partial_order` button to top buttons on `order_info` page. -->
 <!-- JF 21JUN2023 
         <operation>

@@ -260,7 +260,34 @@
 - Research what **stores** do.
 - Multiple stores can be used for B31. 
 - Can be separted via sub-domain on VHOST.
-    - **TODO**
+    - **TODO:**
     - Test Customer across multiple stores. **WORKS**
-    - Test inventory multi-use.
-    - Test email separation.
+    - Test inventory multi-use. **WORKS**
+    - Test email separation. **NOT AVAILABLE**
+- Cart quantity adjustment/deletion not working on Default store. 
+- Carts cross over between stores. 
+- Email delivery from store/to customer doesn't seem to be working.
+    - Needs package: **php-mail**.
+    - Issue persists.
+    - **Mail Engine** setting was set to none. May autopopulate with package installed before opencart install similar to `php-mysqli` issue.
+    - Testing via Marketing > Mail. Success banner received on admin side. 
+    - In `/var/www/html/php.ini`, uncommented or added:
+        - display_errors = 1;
+        - error_reporting = E_ALL;
+        - extension=mail;
+    - Installed package **sendmail**
+- >PHP Warning:  PHP Startup: Unable to load dynamic library 'mysqli' (tried: /usr/lib/php/20210902/mysqli (/usr/lib/php/20210902/mysqli: cannot open shared object file: No such file or directory), /usr/lib/php/20210902/mysqli.so (/usr/lib/php/20210902/mysqli.so: undefined symbol: mysqlnd_global_stats)) in Unknown on line 0
+    - Mail attemps are much slower after **sendmail** install. 
+        - Timing out with error:
+        - >unable to qualify my own domain name (concord) -- using short name
+        My unqualified host name (concord) unknown; sleeping for retry
+
+
+### 23JUL2023:
+
+- Tried some **sendmail** troubleshooting to no avail. 
+- Extensions to work on:
+
+
+### 08SEP2023:
+

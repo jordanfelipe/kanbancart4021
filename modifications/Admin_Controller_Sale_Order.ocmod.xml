@@ -64,8 +64,8 @@ Check admin/view/template/sale/order_info.twig
             <add position="after"><![CDATA[
                 $data['text_location'] = $this->language->get('text_location');
             ]]></add>
-        </operation>
--->
+        </operation> -->
+
 
         <!-- Define `button_partial_order` tool tip. -->
 <!-- 21JUN2023
